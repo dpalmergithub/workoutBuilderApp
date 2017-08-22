@@ -1,0 +1,195 @@
+<!doctype HTML>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatabile" content="ie=edge">
+    <title>My W.O.D</title>
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <link href="styles.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(function() {
+            $("#workoutList").sortable();
+            $("#workoutList").disableSelection();
+        });
+    </script>
+</head>
+
+<body ng-app="myApp" ng-controller="myCtrl">
+    <nav class="myNav">
+        <header>My W.O.D</header>
+        <div class="myNavListDiv">
+            <ul class="myNavList">
+                <li>
+                    <a href="#">Archive</a>
+                </li>
+                <li>
+                    <a href="#">Download</a>
+                </li>
+                <li>
+                    <a href="#" id="print">Print</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container main">
+        <div class="row">
+            <div class="col-md-4">
+                <div id="warmup">
+                    <h1 class="text-center">Add A Warmup</h1>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <p class="warmupIcons"><i class="material-icons">directions_walk</i></p>
+                        </div>
+                        <div class="col-md-4">
+                            <p class="warmupIcons"><i class="material-icons">directions_run</i>
+                            </p>
+                        </div>
+                        <div class="col-md-4">
+                            <p class="warmupIcons"><i class="material-icons">directions_bike</i></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <p class="warmupIcons"><i class="material-icons">rowing</i></p>
+                        </div>
+                        <div class="col-md-4">
+                            <p class="warmupIcons"><i class="material-icons"><i class="material-icons">terrain</i></i>
+                            </p>
+                        </div>
+                        <div class="col-md-4">
+                            <p class="warmupIcons"><i class="material-icons">create</i></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <form id="workoutForm">
+                    <h1 class="text-center">Build Your W.O.D</h1>
+                    <div class="form-group row">
+                        <div class="col-md-6 text-center">
+                            <label for="name" class="mandatory">Title of Workout</label>
+                            <input ng-model="name" class="form-control" type="text" id="name" placeholder="title of workout" required>
+                        </div>
+                        <div class="col-md-6 text-center">
+                            <label for="sets" class="mandatory">Sets</label>
+                            <input ng-model="sets" class="form-control" type="number" id="sets" placeholder="number of sets" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-md-6 text-center">
+                            <label for="exercise" class="mandatory">Exercise</label>
+                            <input class="form-control" type="text" list="exeList" id="exercise" value="" placeholder="name of exercise" required>
+                            <datalist id="exeList"></datalist>
+                        </div>
+                        <div class="col-md-6 text-center">
+                            <label for="reps" class="mandatory">For Reps/Time</label>
+                            <input id="repsTime" class="form-control" type="text" list="repsTimeList" placeholder="enter reps/time" required>
+                            <datalist id="repsTimeList"></datalist>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-6 text-center">
+                            <button id="add" onclick="addExe()" type="button" class="form-control btn  btn-block btn-info"><span class="glyphicon glyphicon-plus text-center"></span></button>
+                            <button id="add" onclick="deleteExe()" type="button" class="form-control btn  btn-block btn-danger"><span class="glyphicon glyphicon-minus text-center"></span></button>
+                        </div>
+                        <div class="col-md-6 text-center">
+                            <label for="rest">Rest Intervals</label>
+                            <select ng-model="rests" class="form-control" type="select" id="rest" required>
+                                <option>No rest</option>
+                                <option >10 seconds</option>
+                                <option>30 seconds</option>
+                                <option>45 seconds</option>
+                                <option>60 seconds</option>
+                                </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-12 text-center">
+                            <label for="details">Workout Details</label>
+                            <textarea class="form-control" id="details" ng-model="details"></textarea>
+                            <button type="button" class="btn btn-block btn-success" id="mySubmitButton">Add to Archive</button>
+                        </div>
+                    </div>
+
+
+
+
+                </form>
+            </div>
+            <div class="col-md-4" id="workout">
+                <h1 class="text-center text-uppercase" id="workoutTitle"><strong>{{name}}</strong></h1>
+                <h3 class="text-center"><strong>Sets:{{sets}}</strong></h3>
+                <div id="workoutBody">
+                    <ul class="text-uppercase" id="workoutList"></ul>
+                </div>
+                <div class="text-center">
+                    <h3><strong>Rest Intervals: {{rests}}</strong></h3>
+                    <h4 class="text-center"><strong>Details:</strong></h4>
+                    <p class="details"><strong>{{details}}</strong></p>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="footer"></div>
+
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('myCtrl', function($scope) {
+            $scope.name = "";
+            $scope.sets = "";
+            $scope.rests = "";
+            $scope.details = "";
+        });
+
+        function addExe() {
+            var exercise = $("#exercise").val();
+            var reps = $("#repsTime").val();
+            if ((exercise && reps) == "") {
+                alert("Please enter an exercise and reps before adding");
+                return false;
+            }
+            $("#workoutList").append("<li>" + exercise + "<span style='float:right'>" + reps + " " + "</span></li>");
+            document.getElementById("exercise").value = "";
+        }
+
+        function deleteExe() {
+            $("#workoutList li").last().remove();
+
+        }
+
+        (function options() {
+            var exeList = $("#exeList");
+            var repsTimeList = $("#repsTimeList");
+            var exercisesArray = ["Pushups", "Pullups", "Squats", "Burpees", "Clapping Pushups", "Lunges"];
+            var repsTimeArray = ["5", "10", "15", "20", "25", "30", "50", "100", "10 seconds", "30 seconds", "60 seconds"];
+            var i = 0;
+            var exeLength = exercisesArray.length;
+            var repsTimeLength = repsTimeArray.length;
+            for (i; i < exeLength; i++) {
+                exeList.append("<option>" + exercisesArray[i] + "</option>");
+            }
+            for (i = 0; i < repsTimeLength; i++) {
+                repsTimeList.append("<option>" + repsTimeArray[i] + "</option>");
+            }
+        })();
+    </script>
+
+    <script src="scripts.js"></script>
+</body>
+
+
+</html>

@@ -1,0 +1,195 @@
+@font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://example.com/MaterialIcons-Regular.eot);
+    /* For IE6-8 */
+    src: local('Material Icons'), local('MaterialIcons-Regular'), url(https://example.com/MaterialIcons-Regular.woff2) format('woff2'), url(https://example.com/MaterialIcons-Regular.woff) format('woff'), url(https://example.com/MaterialIcons-Regular.ttf) format('truetype');
+}
+
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    /* Preferred icon size */
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+    /* Support for IE. */
+    font-feature-settings: 'liga';
+}
+
+@media print {
+    form,
+    nav,
+    #warmup {
+        display: none;
+    }
+    #workout {
+        background-color: white;
+        height: 100%;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        margin: 150px 0 0 0;
+        padding: 15px;
+        font-size: 14px;
+        line-height: 18px;
+    }
+    #workout ul {
+        padding: 0 25% 0 25%;
+    }
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    color: #fff;
+    font-family: 'PT Sans', sans-serif;
+    background: rgba(0, 0, 0, .03);
+}
+
+form {
+    background: #4285F4;
+    padding: 15px;
+    border-radius: 12px;
+    background: red;
+    /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(left top, #33b5e5, #0d47a1);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom right, #33b5e5, #0d47a1);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom right, #33b5e5, #0d47a1);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom right, #33b5e5, #0d47a1);
+    /* Standard syntax */
+}
+
+#warmup {
+    color: rgba(0, 0, 0, .50);
+    padding: 15px;
+}
+
+#workout {
+    color: rgba(0, 0, 0, .50);
+    border-radius: 12px;
+    padding: 15px;
+}
+
+.navbar-fixed {
+    top: 0;
+    z-index: 100;
+    position: fixed;
+    width: 100%;
+}
+
+.main {
+    margin-top: 50px;
+}
+
+.mandatory:before {
+    content: "*";
+    color: red
+}
+
+#mySubmitButton {
+    margin: 15px 0 0 0;
+}
+
+#workoutList {
+    list-style: none;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+#workoutList li {
+    border: solid thin #ccc;
+    padding: 5px 15px 5px 15px;
+    border-radius: 3px;
+    margin: 4px 0 4px 0;
+    background: #fff;
+    color: rgba(0, 0, 0, .50);
+}
+
+header {
+    display: inline-block;
+    padding: 20px;
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+.myNav {
+    height: 80px;
+    background: #fff;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, .04);
+    color: rgba(0, 0, 0, .50);
+    width: 100%;
+}
+
+.myNavList li {
+    list-style: none;
+    display: inline-block;
+    padding: 20px;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.myNavList li a {
+    color: rgba(0, 0, 0, .50);
+}
+
+.myNavList li a:hover {
+    text-decoration: none;
+    color: #000;
+}
+
+.myNavList li a:focus {
+    text-decoration: none;
+    color: #000;
+}
+
+.myNavListDiv {
+    float: right;
+    padding: 0 25px 0 0;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.warmupIcons {
+    border: solid thin rgba(0, 0, 0, .20);
+    text-align: center;
+    padding: 25px;
+    color: #fff;
+    background: #2BBBAD;
+}
+
+.details {
+    max-width: 400px;
+    word-wrap: break-word;
+    font-size: 20px;
+}
+
+.footer {
+    position: relative;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 150px;
+    background: #ccc;
+    margin: 150px 0 0 0;
+}
